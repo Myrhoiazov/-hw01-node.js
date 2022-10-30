@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { nanoid } from 'nanoid';
-import { stringify } from 'querystring';
 
 const contactsPath = path.resolve('./db/contacts.json');
 
@@ -32,7 +31,6 @@ export async function removeContact(contactId) {
   const foundContactIdx = data.findIndex(({ id }) => id === contactId);
   const newData = data.splice(foundContactIdx, 1);
   await writeFile(newData);
-
   console.table(newData);
   return true;
 }
